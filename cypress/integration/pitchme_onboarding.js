@@ -1,4 +1,4 @@
-describe('My First Test', () => {
+describe('Pitch Me', () => {
   it('Sign up and onboarding', () => {
     cy.viewport(1440, 1080)
     cy.visit('https://pitchme.co/signup/candidate')
