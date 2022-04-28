@@ -3,10 +3,10 @@ describe('Pitch Me', () => {
     cy.viewport(1440, 1080)
     cy.visit('https://pitchme.co/signup/candidate')
     cy.contains('Via email').click()
-
+    var current_timestamp = Date.now()
     cy.get('input[name="first_name"]').type('John').should('have.value', 'John')
     cy.get('input[name="last_name"]').type('Doe').should('have.value', 'Doe')
-    cy.get('input[name="email"]').type('JJohny@testic.com').should('have.value', 'JJohny@testic.com')
+    cy.get('input[name="email"]').type('John+' + current_timestamp + '@testic.com').should('have.value', 'John+' + current_timestamp + '@testic.com')
     cy.get('input[name="password"]').type('12345678').should('have.value', '12345678')
 
     cy.get('button[type="submit"]').click()
@@ -45,7 +45,6 @@ describe('Pitch Me', () => {
     cy.contains('Next').click()
     cy.wait(2000)
 
-    // cy.page().should('include', 'Yes, we\'ve found a lot of suitable positions!')
     cy.get('button[type="submit"]').click()
     cy.contains('Add data manually').click()
     cy.wait(2000)
